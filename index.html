@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SnapX Photography Contest</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Arial", sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+    span {
+      color: #00bdfe;
+    }
+
+    header {
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00bdfe;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .navbar ul li a {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .navbar .btn {
+      background: #00bdfe;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-size: 0.9rem;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 2rem;
+    }
+    .imgbg {
+      margin-top: -230px;
+      width: 100vw;
+      display: grid;
+      overflow: hidden;
+    }
+    .hero-content h1 {
+      margin-top: -500px;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-content h1 span {
+      color: #00bdfe;
+    }
+
+    .hero-content p {
+      font-size: 1rem;
+      margin-bottom: 4rem;
+    }
+
+    .hero-buttons .btn1 {
+      margin: 0.5rem;
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      color: #fff;
+      border: 2px solid #fff;
+    }
+    .btn2 {
+      margin-bottom: -200px;
+      color: #00bdfe;
+      font-size: 1.5rem;
+    }
+    .images {
+      display: flex;
+      justify-content: space-around;
+
+      margin-top: -100px;
+    }
+    .images img {
+      border-radius: 10px;
+      width: 25vw;
+    }
+
+    .categories {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: #f8f9fa;
+      border-radius: 20px;
+    }
+
+    .button:hover {
+      background-color: #fff;
+      color: #00bdfe;
+    }
+    .categories h3 {
+      margin-left: 1100x;
+    }
+    .categories h2 {
+      margin-left: 690x;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .categories h2 span {
+      color: #00bdfe;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .category {
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .category .icon {
+      width: 40px;
+      margin-bottom: -70px;
+      margin-left: -280px;
+    }
+    .category img {
+      margin-top: 50px;
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .category h3 {
+      margin: 1rem 0 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .category p {
+      color: #555;
+    }
+    .category .btn {
+      color: #555;
+      border: 2px solid #00bdfe;
+      margin-bottom: -50px;
+      padding: 5px;
+      border-radius: 5px;
+    }
+    .category .btn:hover {
+      background-color: #00bdfe;
+      color: #fff;
+    }
+    .category .btnn {
+      margin-top: 0.5rem;
+      background: #00bdfe;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-size: 0.9rem;
+    }
+
+    /* Previous Contests Section */
+    .previous-contests {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .previous-contests h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .contest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .contest {
+      text-align: center;
+    }
+
+    .contest img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .contest p {
+      margin-top: 0.5rem;
+      color: #555;
+    }
+    .button2 {
+      border: 2px solid #00bdfe;
+      background-color: #00bdfe;
+      width: 250px;
+      padding: 10px;
+      margin-top: 50px;
+      border-radius: 10px;
+      margin-left: 700px;
+    }
+    .button2:hover {
+      background-color: #fff;
+      color: #00bdfe;
+      border-color: #00bdfe;
+    }
+    /* Pricing Section */
+    .pricing {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: #f8f9fa;
+    }
+
+    .pricing h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .pricing h2 span {
+      color: #00bdfe;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .plan {
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .plan h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .plan p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #00bdfe;
+    }
+
+    .plan .btn {
+      background: #fff;
+      color: #00bdfe;
+      border: 2px solid #555;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-size: 0.9rem;
+    }
+    .plan .btn:hover {
+      background-color: #00bdfe;
+      color: #fff;
+      border-color: #00bdfe;
+    }
+
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 2rem 0;
+      background: #00bdfe;
+      color: #fff;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      .imgbg {
+        width: 138%;
+        height: 700px;
+        margin-left: -40px;
+        margin-top: -70px;
+      }
+      .hero-content h1 {
+        margin-top: -600px;
+        font-size: 1.5rem;
+      }
+
+      .hero-content p {
+        font-size: 0.9rem;
+      }
+
+      .btn1 {
+        margin-top: -300x;
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+      }
+      .images {
+        margin-left: 35px;
+        display: grid;
+        gap: 5px;
+      }
+      .images img {
+        margin-top: 50px;
+        display: grid;
+        gap: 5px;
+        width: 100%;
+      }
+      .button {
+        margin: 0;
+        padding: 0;
+      }
+      .categories h3 {
+        margin: 0;
+        padding: 0;
+      }
+      .categories h2 {
+        margin: 0;
+        padding: 0;
+      }
+      .category .icon {
+        width: 25px;
+        margin-bottom: -40px;
+        margin-left: -220px;
+      }
+      .button2 {
+        margin: 20px 0 0 0px;
+        padding: 0;
+      }
+      .footer {
+        width: 108%;
+      }
+    }
+    /* General styles for small mobile screens (320px and above) */
+
+    /* Tablets (481px to 768px) */
+    @media (min-width: 481px) and (max-width: 768px) {
+      .imgbg {
+        width: 100%;
+        margin-left: 0px;
+        margin-top: -50px;
+      }
+      .hero-content h1 {
+        font-size: 2rem;
+        margin-top: -450px;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      .btn1 {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+      }
+      .images {
+        margin-left: 150px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .categories h2 {
+        font-size: 1.8rem;
+      }
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .pricing-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .footer {
+        width: 129%;
+      }
+    }
+
+    /* Small laptops (769px to 1024px) */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .hero-content h1 {
+        margin-left: 170px;
+        font-size: 2.2rem;
+        margin-top: -400px;
+      }
+      .hero-content p {
+        margin-left: 210px;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+      .imgbg {
+        margin-top: -90px;
+        width: 159vw;
+      }
+      .images {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 60px;
+
+        justify-items: center;
+      }
+      .hero .btn1 {
+        margin-left: 240px;
+      }
+      .categories {
+        width: 127vw;
+      }
+      .categories h2 {
+        font-size: 2rem;
+      }
+      .category .icon {
+        margin-right: -40px;
+      }
+      .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .previous-contests {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .pricing {
+        width: 127vw;
+      }
+      .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Large laptops (1025px and above) */
+    @media (min-width: 1024px) and (max-width: 1439px) {
+      .imgbg {
+        margin-top: -208px;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+        margin-top: -480px;
+      }
+      .hero-content p {
+        font-size: 1.2rem;
+      }
+
+      .images {
+        margin-top: -220px;
+        display: flex;
+        justify-content: space-around;
+      }
+      .categories h2 {
+        font-size: 2.5rem;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (min-width: 1440px) {
+      .imgbg {
+        height: 100vh;
+        margin-top: -410px;
+      }
+      .hero-content h1 {
+        font-size: 3.5rem;
+        margin-top: -770px;
+      }
+      .hero-content p {
+        font-size: 1.5rem;
+      }
+      .images {
+        margin-top: -160px;
+        display: flex;
+        justify-content: space-around;
+      }
+      .button2 {
+        margin-left: 100px;
+      }
+    }
+  </style>
+  <body>
+    <header>
+      <div class="navbar">
+        <div class="logo">SnapX</div>
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Photos & Videos</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Users</a></li>
+          </ul>
+        </nav>
+        <a href="#" class="btn">Sign In / Up</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <img
+          class="imgbg"
+          src="../assets/images/banner-bg.jpg"
+          alt="banner-bg"
+        />
+        <h1>
+          Enter a world of <span>Photos</span> &
+          <span
+            >Amazing<br />
+            Awards</span
+          >
+        </h1>
+        <p>
+          SnapX Photography is a professional website template with 5 different
+          HTML pages for maximum customizations. It is free for commercial
+          <br />usage. This Bootstrap v5.1.3 CSS layout is provided by
+          TemplateMo Free CSS Templates.
+        </p>
+
+        <p></p>
+        <div class="hero-buttons">
+          <a href="#" class="btn1">Explore SnapX Contest</a>
+        </div>
+      </div>
+    </section>
+    <div class="images">
+      <img src="../assets/images/waiting-01.jpg" alt="" />
+      <img src="../assets/images/waiting-02.jpg" alt="" />
+      <img src="../assets/images/waiting-03.jpg" alt="" />
+    </div>
+
+    <section class="categories">
+      <h3><span>OUR CATEGORIES</span></h3>
+      <h2>Check Out <span>Popular Contest Categories</span></h2>
+
+      <div class="category-grid">
+        <div class="category">
+          <img class="icon" src="../assets/images/icon-01.png" alt="icon 1" />
+          <h3>Nature Pic Contest</h3>
+          <p>126 Available Contests</p>
+          <img src="../assets/images/popular-01.png" alt="Nature Pic Contest" />
+
+          <a href="#" class="btn">Browse Nature Pic Contests</a>
+        </div>
+        <div class="category">
+          <img class="icon" src="../assets/images/icon-02.png" alt="icon 2" />
+          <h3>Random Pic Contest</h3>
+          <p>116 Available Contests</p>
+          <img src="../assets/images/popular-02.png" alt="Random Pic Contest" />
+
+          <a style="font-size: 15px" href="#" class="btn"
+            >Browse Random Pic Contests</a
+          >
+        </div>
+        <div class="category">
+          <img class="icon" src="../assets/images/icon-03.png" alt="icon 3" />
+          <h3>Portrait Pic Contest</h3>
+          <p>164 Available Contests</p>
+          <img
+            src="../assets/images/popular-03.png"
+            alt="Portrait Pic Contest"
+          />
+
+          <a href="#" class="btn">Browse Portrait Pic Contests</a>
+        </div>
+        <div class="category">
+          <img class="icon" src="../assets/images/icon-04.png" alt="icon 4" />
+          <h3>Space Pic Contest</h3>
+          <p>135 Available Contests</p>
+          <img src="../assets/images/popular-04.png" alt="Space Pic Contest" />
+
+          <a href="#" class="btn">Browse Space Pic Contests</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Previous Contests Section -->
+    <section class="previous-contests">
+      <h3>CLOSED PHOTOGRAPHY CONTESTS</h3>
+      <h2>
+        <span>Previous Contests </span> With Handpicked <span> Winners</span>
+      </h2>
+      <div class="contest-grid">
+        <div class="contest">
+          <img src="../assets/images/closed-01 (1).jpg" alt="Contest Image" />
+          <p>96 Participants | 410 Pictures</p>
+        </div>
+        <div class="contest">
+          <img src="../assets/images/closed-02.jpg" alt="Contest Image" />
+          <p>74 Participants | 284 Pictures</p>
+        </div>
+        <div class="contest">
+          <img src="../assets/images/closed-03.jpg" alt="Contest Image" />
+          <p>88 Participants | 320 Pictures</p>
+        </div>
+      </div>
+      <div class="button2">
+        <p>Browse Open Contests</p>
+      </div>
+    </section>
+
+    <section class="pricing">
+      <h3><span>OUR PRICING</span></h3>
+      <h2>
+        Photography <span>Contest Plans </span> And Price <span> Awards</span>
+      </h2>
+      <div class="pricing-grid">
+        <div class="plan">
+          <img src="../assets/images/pricing-01.jpg" alt="pricing-01" />
+          <h3>Basic Plan</h3>
+          <p>Lorem Ipsum Dolores Sonte</p>
+          <p>Songe Lorem Ipsum Dol</p>
+          <p>Matrios Venga Heptuss</p>
+          <p style="text-decoration: line-through; color: #afafaf">
+            Denim Sriracha Kogi
+          </p>
+          <p style="text-decoration: line-through; color: #afafaf">
+            Digital Photography Awards
+          </p>
+          <p>$25 USD</p>
+          <a href="#" class="btn">Choose This Plan</a>
+        </div>
+        <div class="plan">
+          <img src="../assets/images/pricing-02.jpg" alt="pricing-02" />
+          <h3>Standard Plan</h3>
+          <p>Lorem Ipsum Dolores Sonte</p>
+          <p>Songe Lorem Ipsum Dol</p>
+          <p>Matrios Venga Heptuss</p>
+          <p>Denim Sriracha Kogi</p>
+          <p style="text-decoration: line-through; color: #afafaf">
+            Digital Photography Awards
+          </p>
+          <p>$45 USD</p>
+          <a href="#" class="btn">Choose This Plan</a>
+        </div>
+        <div class="plan">
+          <img src="../assets/images/pricing-02.jpg" alt="pricing-03" />
+          <h3>Advanced Plan</h3>
+          <p>Lorem Ipsum Dolores Sonte</p>
+          <p>Songe Lorem Ipsum Dol</p>
+          <p>Matrios Venga Heptuss</p>
+          <p>Denim Sriracha Kogi</p>
+          <p>Digital Photography Awards</p>
+          <p>$85 USD</p>
+          <a href="#" class="btn">Choose This Plan</a>
+        </div>
+      </div>
+    </section>
+    <div class="footer">
+      <footer>
+        <p>&copy; 2023 SnapX Photography Contest. All Rights Reserved.</p>
+      </footer>
+    </div>
+  </body>
+</html>
